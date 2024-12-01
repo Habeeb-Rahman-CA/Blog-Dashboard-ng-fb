@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { addDoc, collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from 'firebase/firestore';
 import { firestore } from '../firebase/firebaseConfig';
 import { CategoryData } from '../category/category-data';
 import { ToastrService } from 'ngx-toastr';
@@ -27,5 +27,12 @@ export class CategoryService {
       }
     })
     return category
+  }
+
+  async deleteCategory(category: string){
+    const snapshot = await getDocs(query(collection(firestore, 'categories'), where('category', '==', category)))
+    const categoryDoc = snapshot.docs[0]
+    this.toastr.success('Deleted the Category')
+    deleteDoc(categoryDoc.ref)
   }
 }

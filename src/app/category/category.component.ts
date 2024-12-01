@@ -36,8 +36,9 @@ export class CategoryComponent implements OnInit {
     this.categoryList = await this.categoryService.getCategory()
   }
 
-  onDelete(){
-    
+  onDelete(category: string){
+  this.categoryService.deleteCategory(category)
+  this.getAllCategory()
   }
 
 }
