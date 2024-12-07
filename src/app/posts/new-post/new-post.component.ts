@@ -3,12 +3,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CategoryService } from '../../service/category.service';
-import { ObjectSchema } from 'firebase/vertexai';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-new-post',
   standalone: true,
-  imports: [RouterModule, FormsModule, CommonModule],
+  imports: [RouterModule, FormsModule, CommonModule, AngularEditorModule],
   templateUrl: './new-post.component.html',
   styleUrl: './new-post.component.css',
 })
